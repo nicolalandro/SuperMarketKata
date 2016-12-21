@@ -11,7 +11,7 @@ public class Checkout {
     }
 
     public int total() {
-        if (item.isEmpty()) {
+        if ("".equals(item)) {
             return 0;
         }
         return 50;

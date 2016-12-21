@@ -20,7 +20,5 @@ public class CheckoutTest extends TestCase {
         int total = checkout.total();
 
         assertEquals(50, total);
-
-
     }
 }
