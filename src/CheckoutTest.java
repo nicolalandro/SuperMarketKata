@@ -1,11 +1,18 @@
 import junit.framework.TestCase;
 
 
-
 public class CheckoutTest extends TestCase {
 
+
+    private Checkout checkout;
+
+    public void setUp() throws Exception {
+        super.setUp();
+        checkout = new Checkout();
+    }
+
+
     public void test_total_0_with_empty_item() throws Exception {
-        Checkout checkout = new Checkout();
         checkout.scan("");
 
         int total = checkout.total();
@@ -14,7 +21,6 @@ public class CheckoutTest extends TestCase {
     }
 
     public void test_total_50_with_item_A() throws Exception {
-        Checkout checkout = new Checkout();
         checkout.scan("A");
 
         int total = checkout.total();
