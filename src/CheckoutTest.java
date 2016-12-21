@@ -12,4 +12,15 @@ public class CheckoutTest extends TestCase {
 
         assertEquals(0, total);
     }
+
+    public void test_total_50_with_item_A() throws Exception {
+        Checkout checkout = new Checkout();
+        checkout.scan("A");
+
+        int total = checkout.total();
+
+        assertEquals(50, total);
+
+
+    }
 }
