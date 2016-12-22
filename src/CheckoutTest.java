@@ -27,4 +27,13 @@ public class CheckoutTest extends TestCase {
 
         assertEquals(50, total);
     }
+
+    public void test_total_80_with_AB() throws Exception {
+        checkout.scan("AB");
+
+        int total = checkout.total();
+
+        assertEquals(80, total);
+
+    }
 }
