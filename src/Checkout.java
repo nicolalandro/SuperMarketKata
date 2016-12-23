@@ -25,6 +25,7 @@ public class Checkout {
         return total;
     }
 
+    //TODO parlare del refactoring e sul fare degli oggetti prodotto, che implementano la stessa interfaccia o che sono sottoclassi di qualcosa
     private int getPriceForItem(char item) {
         switch (item) {
             case 'A':

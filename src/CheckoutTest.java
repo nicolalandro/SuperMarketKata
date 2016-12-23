@@ -37,6 +37,9 @@ public class CheckoutTest extends TestCase {
 
     }
 
+
+    //TODO da solo
+
     public void test_total_115_with_CDBA() throws Exception {
         checkout.scan("CDBA");
 
