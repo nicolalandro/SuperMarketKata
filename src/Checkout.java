@@ -1,68 +1,50 @@
-
+import java.util.ArrayList;
 
 public class Checkout {
+    private ArrayList<Item> itemsList;
+
     private int specialPriceA=0;
     private int specialPriceB=0;
 
-    private String items;
 
+    public Checkout() {
+        itemsList = new ArrayList() ;
+        itemsList.add(new ItemA());
+        itemsList.add(new ItemB());
+        itemsList.add(new ItemC());
+        itemsList.add(new ItemD());
+        for(Item item : itemsList){
+            item.setQuantity(0);
+        }
+    }
 
     public void scan(String items) {
-
-        this.items = items;
+        for(int indiceStringa = 0; indiceStringa< items.length(); indiceStringa++){
+                    switch (items.charAt(indiceStringa)) {
+                        case 'A':
+                            itemsList.get(0).setQuantity(itemsList.get(0).getQuantity()+1);
+                            break;
+                        case 'B':
+                            itemsList.get(1).setQuantity(itemsList.get(1).getQuantity()+1);
+                            break;
+                        case 'C':
+                            itemsList.get(2).setQuantity(itemsList.get(2).getQuantity()+1);
+                            break;
+                        case 'D':
+                            itemsList.get(3).setQuantity(itemsList.get(3).getQuantity()+1);
+                            break;
+                    }
+        }
     }
 
     public int total() {
-        if ("".equals(items)) {
-            return 0;
-        }
         int total=0;
-        for(int indiceStringa = 0; indiceStringa< items.length(); indiceStringa++){
 
-            total += getPriceForItem(items.charAt(indiceStringa));
-
+        for(Item item : itemsList){
+            total += item.getPrice();
         }
+
         return total;
     }
 
-    //TODO parlare del refactoring e sul fare degli oggetti prodotto, che implementano la stessa interfaccia o che sono sottoclassi di qualcosa
-    private int getPriceForItem(char item) {
-        switch (item) {
-            case 'A':
-                return getPriceA();
-            case 'B':
-                return getPriceB();
-            case 'C':
-                return getPriceC();
-            case 'D':
-                return getPriceD();
-        }
-        return 0;
-    }
-
-    private int getPriceA(){
-        specialPriceA++;
-        if(specialPriceA!=3) {
-            return 50;
-        }
-        specialPriceA=0;
-        return 30;
-    }
-
-    private int getPriceB(){
-        specialPriceB++;
-        if(specialPriceB!=2){
-            return 30;
-        }
-        specialPriceB=0;
-        return 15;
-    }
-
-    private int getPriceC(){
-        return 20;
-    }
-
-    private int getPriceD(){
-        return 15;
-    }
 }
