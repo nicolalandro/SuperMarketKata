@@ -8,6 +8,13 @@ public class Printer {
     }
 
     public String print() {
-        return "Il totale è: "+checkout.total();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(Item item : checkout.getItemsList()){
+            stringBuilder.append(item.getName()+" x"+item.getQuantity()+" : "+item.getPrice());
+        }
+
+        stringBuilder.append("\nIl totale è: "+checkout.total());
+        return stringBuilder.toString();
     }
 }
