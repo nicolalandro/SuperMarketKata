@@ -10,6 +10,7 @@ public class ItemBTest extends TestCase{
     }
 
     public void test_getPrice_Expected_30() throws Exception {
+        itemB.setQuantity(1);
         assertEquals(30, itemB.getPrice());
     }
 

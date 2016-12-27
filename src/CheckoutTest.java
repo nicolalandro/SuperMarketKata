@@ -1,5 +1,7 @@
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 
 public class CheckoutTest extends TestCase {
 
@@ -111,6 +113,15 @@ public class CheckoutTest extends TestCase {
         int total = checkout.total();
 
         assertEquals(190, total);
+    }
+
+    public void test_getItemsList() throws Exception {
+        checkout.scan("A");
+
+        ArrayList<Item> list = checkout.getItemsList();
+        int actual = list.get(0).getQuantity();
+
+        assertEquals(1, actual);
     }
 
 }

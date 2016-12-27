@@ -44,4 +44,14 @@ public class Checkout {
         return total;
     }
 
+    public ArrayList<Item> getItemsList(){
+        ArrayList<Item> items = new ArrayList();
+        for(Item item : itemsList){
+            if(item.getQuantity()!=0){
+                items.add(item);
+            }
+        }
+        return items;
+    }
+
 }

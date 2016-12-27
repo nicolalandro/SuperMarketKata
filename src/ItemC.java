@@ -1,18 +1,13 @@
 
-public class ItemC implements Item{
+public class ItemC extends Item{
 
-    private int quantity=1;
+
+    public ItemC() {
+        super('C');
+    }
 
     @Override
     public int getPrice() {
-        return 20*quantity;
-    }
-    @Override
-    public int getQuantity() {
-        return quantity;
-    }
-    @Override
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        return 20*getQuantity();
     }
 }

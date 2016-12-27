@@ -1,10 +1,14 @@
 
-public class ItemB implements Item{
+public class ItemB extends Item{
 
-    private int quantity=1;
+
+    public ItemB() {
+        super('A');
+    }
 
     @Override
     public int getPrice() {
+        int quantity = getQuantity();
         int total = 0;
         while (quantity-2>=0){
             quantity = quantity-2;
@@ -12,12 +16,5 @@ public class ItemB implements Item{
         }
         return total+30*quantity;
     }
-    @Override
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    @Override
-    public int getQuantity() {
-        return quantity;
-    }
+
 }
