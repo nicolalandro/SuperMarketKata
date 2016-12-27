@@ -115,13 +115,16 @@ public class CheckoutTest extends TestCase {
         assertEquals(190, total);
     }
 
+    //TODO 2 assert??
     public void test_getItemsList() throws Exception {
         checkout.scan("A");
 
         ArrayList<Item> list = checkout.getItemsList();
-        int actual = list.get(0).getQuantity();
+        int actualQuantity = list.get(0).getQuantity();
+        char actualItem = list.get(0).getName();
 
-        assertEquals(1, actual);
+        assertEquals(1, actualQuantity);
+        assertEquals('A', actualItem);
     }
 
 }

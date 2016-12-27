@@ -3,7 +3,7 @@ public class ItemB extends Item{
 
 
     public ItemB() {
-        super('A');
+        super('B');
     }
 
     @Override

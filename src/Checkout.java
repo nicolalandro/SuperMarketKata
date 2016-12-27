@@ -17,20 +17,12 @@ public class Checkout {
 
     public void scan(String items) {
         for(int indiceStringa = 0; indiceStringa< items.length(); indiceStringa++){
-                    switch (items.charAt(indiceStringa)) {
-                        case 'A':
-                            itemsList.get(0).setQuantity(itemsList.get(0).getQuantity()+1);
-                            break;
-                        case 'B':
-                            itemsList.get(1).setQuantity(itemsList.get(1).getQuantity()+1);
-                            break;
-                        case 'C':
-                            itemsList.get(2).setQuantity(itemsList.get(2).getQuantity()+1);
-                            break;
-                        case 'D':
-                            itemsList.get(3).setQuantity(itemsList.get(3).getQuantity()+1);
-                            break;
-                    }
+            for(Item item : itemsList){
+                if(item.getName() == items.charAt(indiceStringa) ){
+                    item.setQuantity(item.getQuantity()+1);
+                }
+            }
+
         }
     }
 
