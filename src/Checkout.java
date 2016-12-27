@@ -3,9 +3,6 @@ import java.util.ArrayList;
 public class Checkout {
     private ArrayList<Item> itemsList;
 
-    private int specialPriceA=0;
-    private int specialPriceB=0;
-
 
     public Checkout() {
         itemsList = new ArrayList() ;
