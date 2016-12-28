@@ -12,7 +12,7 @@ public class PrinterTest extends TestCase{
 
     public void setUp() throws Exception {
         super.setUp();
-//        checkoutMock = new Checkout();
+//        CheckoutMock = new Checkout();
         checkoutMock = mock(Checkout.class);
         printer = new Printer(checkoutMock);
     }
@@ -27,7 +27,7 @@ public class PrinterTest extends TestCase{
     }
 
     public void test_print_with_value() throws Exception {
-//        checkoutMock.scan("A");
+//        CheckoutMock.scan("A");
         when(checkoutMock.total()).thenReturn(50);
 
         String actual = printer.print();
@@ -63,6 +63,43 @@ public class PrinterTest extends TestCase{
         printer.print();
 
         verify(checkoutMock).getItemsList();
+    }
+
+    public void test_printer_gets_items_from_personalCheckoutMock() throws Exception {
+        CheckoutMock checkoutMock = new CheckoutMock();
+        printer = new Printer(checkoutMock);
+
+        ArrayList<Item> itemList = new ArrayList();
+        ItemA itemA = new ItemA();
+        itemA.setQuantity(1);
+        itemList.add(itemA);
+
+
+        checkoutMock.when_getItemsList_ThenReturn(itemList);
+        checkoutMock.when_total_ThenReturn(50);
+
+        printer.print();
+
+        checkoutMock.verifyGetItemList();
+    }
+
+    public void test_printer_prints_right_string_with_item_A_from_personalCheckoutMock() throws Exception {
+        CheckoutMock checkoutMock = new CheckoutMock();
+        printer = new Printer(checkoutMock);
+
+        ArrayList<Item> itemList = new ArrayList();
+        ItemA itemA = new ItemA();
+        itemA.setQuantity(1);
+        itemList.add(itemA);
+
+
+        checkoutMock.when_getItemsList_ThenReturn(itemList);
+        checkoutMock.when_total_ThenReturn(50);
+
+        String actual = printer.print();
+
+        assertEquals("A x1 : 50" +
+                "\nIl totale è: 50", actual);
     }
 
 
