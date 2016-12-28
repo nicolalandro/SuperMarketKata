@@ -37,14 +37,18 @@ public class PrinterTest extends TestCase{
     }
 
 
-
-    public void test_print_with_itemA_assert() throws Exception {
+    private void set_checkoutMock_getItemsList_with_one_itemA_and_total_with_50(){
         ArrayList<Item> itemList = new ArrayList();
-        itemList.add(new ItemA());
-        itemList.get(0).setQuantity(1);
+        ItemA itemA = new ItemA();
+        itemA.setQuantity(1);
+        itemList.add(itemA);
 
         when(checkoutMock.getItemsList()).thenReturn(itemList);
         when(checkoutMock.total()).thenReturn(50);
+    }
+
+    public void test_printer_prints_right_string_with_item_A() throws Exception {
+        set_checkoutMock_getItemsList_with_one_itemA_and_total_with_50();
 
         String actual = printer.print();
 
@@ -53,15 +57,10 @@ public class PrinterTest extends TestCase{
 
     }
 
-    public void test_print_with_itemA_verify_gettItemsList() throws Exception {
-        ArrayList<Item> itemList = new ArrayList();
-        itemList.add(new ItemA());
-        itemList.get(0).setQuantity(1);
+    public void test_printer_gets_items_from_checkout() throws Exception {
+        set_checkoutMock_getItemsList_with_one_itemA_and_total_with_50();
 
-        when(checkoutMock.getItemsList()).thenReturn(itemList);
-        when(checkoutMock.total()).thenReturn(50);
-
-        String actual = printer.print();
+        printer.print();
 
         verify(checkoutMock).getItemsList();
     }

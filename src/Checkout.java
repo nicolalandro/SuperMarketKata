@@ -5,7 +5,7 @@ public class Checkout {
 
 
     public Checkout() {
-        itemsList = new ArrayList() ;
+        itemsList = new ArrayList();
         itemsList.add(new ItemA());
         itemsList.add(new ItemB());
         itemsList.add(new ItemC());

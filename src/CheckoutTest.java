@@ -120,9 +120,9 @@ public class CheckoutTest extends TestCase {
         checkout.scan("A");
 
         ArrayList<Item> list = checkout.getItemsList();
+
         int actualQuantity = list.get(0).getQuantity();
         char actualItem = list.get(0).getName();
-
         assertEquals(1, actualQuantity);
         assertEquals('A', actualItem);
     }
