@@ -10,9 +10,6 @@ public class Checkout {
         itemsList.add(new ItemB());
         itemsList.add(new ItemC());
         itemsList.add(new ItemD());
-        for(Item item : itemsList){
-            item.setQuantity(0);
-        }
     }
 
     public void scan(String items) {
